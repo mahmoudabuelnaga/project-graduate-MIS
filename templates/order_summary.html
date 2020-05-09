@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- ================ start banner area ================= -->
+<section class="blog-banner-area" id="blog">
+    <div class="container h-100">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h1>Order Details</h1>
+                <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Order Summary
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ end banner area ================= -->
+
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+    <div class="container mb-5">
+        <div class="row s_product_inner">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Item Price</th>
+                        <th scope="col">Delete from Cart</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order_item in order.items.all %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+
+                        <td>
+                            <a style="color: currentColor;" href="{{ order_item.item.get_absolute_url }}">
+                                {{ order_item.item.title }}
+                            </a>
+                        </td>
+
+                        <td>{{ order_item.item.price }}</td>
+                        <td>
+                            <a href="{% url 'orders:remove_single_item_from_cart' order_item.item.slug %}">
+                                <i class="fas fa-minus mr-2"></i></a>
+                            {{ order_item.quantity }}
+                            <a href="{% url 'orders:add_to_cart' order_item.item.slug %}">
+                                <i class="fas fa-plus ml-2"></i></a>
+                        </td>
+                        <td>
+                            ${{ order_item.get_total_item_price }}
+                        </td>
+
+                        <td>
+                            <a style='color: red;' href="{% url 'orders:remove_from_cart' order_item.item.slug %}">
+                                <i class="fas fa-trash float-right"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan='5'>Your cart is empty</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <a class='btn btn-primary float-right'
+                                href="{% url 'products:product_list_category' %}">Continue shopping</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% if object.coupon %}
+                    <tr>
+                        <td colspan="4"><b>Coupon</b></td>
+                        <td><b>-${{ object.coupon.amount }}</b></td>
+                    </tr>
+                    {% endif %}
+                    {% if order.get_total %}
+                    <tr>
+                        <td colspan="4"><b>Order Total</b></td>
+                        <td><b>${{ order.get_total }}</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <a class='btn btn-warning float-right ml-2' href='{% url "address:checkout" %}'>Proceed to
+                                checkout</a>
+                            <a class='btn btn-primary float-left'
+                                href='{% url "products:product_list_category" %}'>Continue shopping</a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--================End Single Product Area =================-->
+
+{% endblock content %}
