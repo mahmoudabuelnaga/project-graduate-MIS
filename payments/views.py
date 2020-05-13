@@ -104,7 +104,7 @@ class PaymentView(LoginRequiredMixin, View):
                 order.save()
 
                 messages.success(self.request, 'Your order was successful!')
-                return redirect('/')
+                return redirect('orders:order_confirmation')
 
             except stripe.error.CardError as e:
                 # Since it's a decline, stripe.error.CardError will be caught

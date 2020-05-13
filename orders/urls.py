@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import OrderView, add_to_cart, remove_from_cart, remove_single_item_from_cart
+from .views import OrderView, add_to_cart, remove_from_cart, remove_single_item_from_cart, order_confirmation
 app_name = 'orders'
 
 urlpatterns = [
@@ -11,5 +11,7 @@ urlpatterns = [
 
     path('remove-item-from-cart/<slug>/',
          remove_single_item_from_cart, name='remove_single_item_from_cart'),
+
+    path('order-confirmation/<order_id>/', order_confirmation, name='order_confirmation'),
 
 ]

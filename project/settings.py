@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'address.apps.AddressConfig',
     'blog.apps.BlogConfig',
+    'contactus.apps.ContactusConfig',
     'coupon.apps.CouponConfig',
     'orders.apps.OrdersConfig',
     'payments.apps.PaymentsConfig',

@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('accounts.urls', namespace='accounts')),
     path('', include('address.urls', namespace='address')),
     path('', include('blog.urls', namespace='blog')),
+    path('', include('contactus.urls', namespace='contactus')),
     path('', include('coupon.urls', namespace='coupon')),
     path('', include('orders.urls', namespace='orders')),
     path('', include('payments.urls', namespace='payments')),

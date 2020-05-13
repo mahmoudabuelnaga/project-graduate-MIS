@@ -116,3 +116,50 @@ def remove_single_item_from_cart(request, slug):
     else:
         messages.info(request, "You do not have an active order")
         return redirect("products:product_list_category")
+
+
+def order_confirmation(request, order_id):
+    order_qs = get_object_or_404(Order, id=order_id, ordered=True)
+    if order_qs.exists():
+        order = order_qs[0]
+        context = {
+            'order':order,
+        }
+    return render(request, 'confirmation.html', context)
+
+
+    # try:
+    #     order = Order.objects.get(
+    #         user=request.user,
+    #         ordered=True,
+    #         id=order_id,
+    #     )
+    #     if order.exists():
+    #         order = order[0]
+    #     context = {
+    #         'order':order,
+    #     }
+    #     return render(request, 'confirmation.html', context)
+    
+    # except ObjectDoesNotExist:
+    #     messages.warning(request, "You do not have an active order.")
+    #     return redirect("/")        
+
+
+
+# class OrderConfirmation(LoginRequiredMixin,View):
+#     def get(self, *args, **kwargs):
+#         try:
+#             order = Order.objects.get(
+#                 user=self.request.user,
+#                 ordered=True,
+#                 # ref_code=ref_code,
+#             )
+#             context = {
+#                 'order':order,
+#             }
+#             return render(self.request, 'confirmation.html', context)
+        
+#         except ObjectDoesNotExist:
+#             messages.warning(self.request, "You do not have an active order.")
+#             return redirect("/")
