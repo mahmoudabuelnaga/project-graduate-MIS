@@ -11,7 +11,4 @@ urlpatterns = [
 
     path('remove-item-from-cart/<slug>/',
          remove_single_item_from_cart, name='remove_single_item_from_cart'),
-
-    path('order-confirmation/<order_id>/', order_confirmation, name='order_confirmation'),
-
 ]
