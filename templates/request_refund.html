@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<!-- ================ start banner area ================= -->
+<section class="blog-banner-area" id="blog">
+    <div class="container h-100">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h1>Request Refound</h1>
+                <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Request Refound
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ end banner area ================= -->
+
+<!--================Single Product Area =================-->
+<section class="checkout_area section-margin--small">
+    <div class="container">
+
+        <div class="billing_details">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <form action="." method="POST">{% csrf_token %}
+                        {% bootstrap_form form %}
+                        {% buttons %}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        {% endbuttons %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Single Product Area =================-->
+
+{% endblock content %}

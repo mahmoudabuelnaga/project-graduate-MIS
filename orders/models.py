@@ -30,29 +30,30 @@ class OrderItem(models.Model):
 
 # Start model Order
 class Order(models.Model):
+    ref_code = models.CharField(max_length=20, blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     items = models.ManyToManyField(OrderItem)
     start_date = models.DateTimeField(auto_now_add=True)
     ordered_date = models.DateTimeField()
     ordered = models.BooleanField(default=False)
-    # ref_code = models.CharField(max_length=20, blank=True, null=True)
-    address = models.ForeignKey(Address,
-                                on_delete=models.SET_NULL,
-                                null=True, blank=True)
-    # billing_address = models.ForeignKey(Address,
-    #                                     related_name='billing_address',
-    #                                     on_delete=models.SET_NULL,
-    #                                     null=True, blank=True)
+    shipping_address = models.ForeignKey(Address,
+                                         related_name='shipping_address',
+                                         on_delete=models.SET_NULL,
+                                         null=True, blank=True)
+    billing_address = models.ForeignKey(Address,
+                                        related_name='billing_address',
+                                        on_delete=models.SET_NULL,
+                                        null=True, blank=True)
     payment = models.ForeignKey(Payment,
                                 on_delete=models.SET_NULL,
                                 blank=True, null=True)
-    # coupon = models.ForeignKey(Coupon,
-    #                            on_delete=models.SET_NULL,
-    #                            blank=True, null=True)
-    # being_delivered = models.BooleanField(default=False)
-    # received = models.BooleanField(default=False)
-    # refund_requested = models.BooleanField(default=False)
-    # refund_granted = models.BooleanField(default=False)
+    coupon = models.ForeignKey(Coupon,
+                               on_delete=models.SET_NULL,
+                               blank=True, null=True)
+    being_delivered = models.BooleanField(default=False)
+    received = models.BooleanField(default=False)
+    refund_requested = models.BooleanField(default=False)
+    refund_granted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
@@ -61,8 +62,15 @@ class Order(models.Model):
         total = 0
         for order_item in self.items.all():
             total += order_item.get_final_price()
-        # if self.coupon:
-        #     total -= self.coupon.amount
         return total
+
+    def get_total_coupon(self):
+        total = 0
+        for order_item in self.items.all():
+            total += order_item.get_final_price()
+        if self.coupon:
+            total -= self.coupon.amount
+        return total
+
 
 # End Model Order

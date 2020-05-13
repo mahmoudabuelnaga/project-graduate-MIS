@@ -38,7 +38,7 @@ def product_list_by_category(request, category_slug=None):
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
-        products = paginator.page(10)
+        products = paginator.page(1)
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 

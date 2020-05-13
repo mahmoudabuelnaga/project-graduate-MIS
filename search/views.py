@@ -8,7 +8,7 @@ from django.views.generic import ListView
 
 class SearchItemView(ListView):
     template_name = 'search_product_list.html'
-    paginate_by = 10
+    paginate_by = 6
 
     def get_context_data(self, *args, **kwargs):
         context = super(SearchItemView, self).get_context_data(*args, **kwargs)

@@ -11,6 +11,8 @@
 	<title>Furniture Store</title>
 	{% block extra_head %}
 	{% endblock %}
+
+
 	<link rel="icon" href="{% static 'img/Fevicon.png' %}" type="image/png">
 	<link rel="stylesheet" href="{% static 'vendors/bootstrap/bootstrap.min.css' %}">
 	<link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
@@ -58,8 +60,7 @@
 									</li>
 								</ul>
 							</li>
-							<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-							</li>
+
 							<li class="nav-item submenu dropdown">
 
 								{% if user.is_authenticated %}
@@ -78,44 +79,51 @@
 								<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Registration</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="/accounts/login">Login</a></li>
+									<li class="nav
+									-item"><a class="nav-link" href="/accounts/login">Login</a></li>
 									<li class="nav-item"><a class="nav-link" href="/accounts/signup">Register</a></li>
 								</ul>
 								{% endif %}
 							</li>
-						</ul>
 
-						<ul class="nav-shop">
-							<li class="nav-item">
-								<form method='GET' action='{% url "search:search_products" %}'
-									class="form my-2 my-lg-0 search-form">
-									<div class='input-group'>
-										<input class="form-control" type="text" placeholder="Search" name='q'
-											aria-label="Search" value='{{ request.GET.q }}'>
-										<span class='input-group-btn'>
-											<button class="btn btn-outline-success" type="submit">Search</button>
-										</span>
-									</div>
-								</form>
-							</li>
 
-							{% if request.user.is_authenticated %}
-							<li class="nav-item">
-								<a href="{% url 'orders:order_summary' %}" class="nav-link waves-effect">
-									<span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
-									<i class="fas fa-shopping-cart"></i>
-									<span class="clearfix d-none d-sm-inline-block"> Cart </span>
-								</a>
-							</li>
-							{% else %}
-							<li class="nav-item">
-								<main class="nav-link waves-effect">
-									<i class="fas fa-shopping-cart"></i>
-									<span class="clearfix d-none d-sm-inline-block"> Cart </span>
-								</main>
-							</li>
+							<ul class="nav-shop">
+								<li class="nav-item">
+									<form method='GET' action='{% url "search:search_products" %}'
+										class="form my-2 my-lg-0 search-form">
+										<div class='input-group'>
+											<input class="form-control" type="text" placeholder="Search" name='q'
+												aria-label="Search" value='{{ request.GET.q }}'>
+											<span class='input-group-btn'>
+												<button class="nav-item" type="submit"><i
+														class="ti-search"></i></button>
+											</span>
+										</div>
+									</form>
+								</li>
 
-							{% endif %}
+								{% if request.user.is_authenticated %}
+								<li class="nav-item">
+									<a href="{% url 'orders:order_summary' %}" class="nav-link waves-effect">
+										<span class="badge red z-depth-1 mr-1"
+											style="background-color: rgb(0, 47, 148);border-radius: 35%;color: azure;">
+											{{ request.user|cart_item_count }} </span>
+										<i class="fas fa-shopping-cart"></i>
+										<span class="clearfix d-none d-sm-inline-block"> Cart </span>
+									</a>
+								</li>
+								{% else %}
+								<li class="nav-item">
+									<main class="nav-link waves-effect">
+										<i class="fas fa-shopping-cart"></i>
+										<span class="clearfix d-none d-sm-inline-block"> Cart </span>
+									</main>
+								</li>
+
+								{% endif %}
+
+							</ul>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -242,16 +250,14 @@
 	</footer>
 	<!--================ End footer Area  =================-->
 
-
-
-	<script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script>
-	<script src="{% static 'vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
+	<!-- <script src="{% static 'vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
 	<script src="{% static 'vendors/skrollr.min.js' %}"></script>
 	<script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'vendors/nice-select/jquery.nice-select.min.js' %}"></script>
 	<script src="{% static 'vendors/jquery.ajaxchimp.min.js' %}"></script>
 	<script src="{% static 'vendors/mail-script.js' %}"></script>
-	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script> -->
+	<!-- <script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script> -->
 
 	{% block extra_scripts %}
 	{% endblock extra_scripts %}

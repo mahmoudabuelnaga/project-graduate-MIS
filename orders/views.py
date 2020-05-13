@@ -8,7 +8,14 @@ from django.utils import timezone
 from .models import Order, OrderItem
 from products.models import Item
 from django.contrib import messages
+import string
+import random
+
 # Create your views here.
+
+
+def create_ref_code():
+    return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 
 
 class OrderView(LoginRequiredMixin, View):
@@ -21,7 +28,7 @@ class OrderView(LoginRequiredMixin, View):
             return render(self.request, 'order_summary.html', context)
 
         except ObjectDoesNotExist:
-            messages.warning(self.request, "You do not have an active order")
+            messages.warning(self.request, "You do not have an active order.")
             return redirect("/")
 
 
