@@ -79,14 +79,13 @@
 								<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Registration</a>
 								<ul class="dropdown-menu">
-									<li class="nav
-									-item"><a class="nav-link" href="/accounts/login">Login</a></li>
+									<li class="nav-item"><a class="nav-link" href="/accounts/login">Login</a></li>
 									<li class="nav-item"><a class="nav-link" href="/accounts/signup">Register</a></li>
 								</ul>
 								{% endif %}
 							</li>
 
-							<li class="nav-item"><a class="nav-link" href="{% url 'contactus:contactus' %}">Contactus</a>
+							<li class="nav-item"><a class="nav-link" href="{% url 'contactus:contactus' %}">Contact</a>
 							</li>
 
 
@@ -252,7 +251,7 @@
 		</div>
 	</footer>
 	<!--================ End footer Area  =================-->
-
+	{% comment %} <script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script> {% endcomment %}
 	<script src="{% static 'vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
 	<script src="{% static 'vendors/skrollr.min.js' %}"></script>
 	<script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
@@ -260,7 +259,6 @@
 	<script src="{% static 'vendors/jquery.ajaxchimp.min.js' %}"></script>
 	<script src="{% static 'vendors/mail-script.js' %}"></script>
 	<script src="{% static 'js/main.js' %}"></script> -->
-	<script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script>
 
 	{% block extra_scripts %}
 	{% endblock extra_scripts %}

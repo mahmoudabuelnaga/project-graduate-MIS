@@ -30,9 +30,9 @@
 
   <!--================ Hero Carousel start =================-->
   <section class="section-margin mt-0">
-    <div class="owl-carousel owl-theme hero-carousel">
+    <div class="row d-flex justify-content-center">
       {% for i3 in item_3 %}
-      <div class="hero-carousel__slide">
+      <div class="hero-carousel__slide col-md-4" style="padding-right:0px">
         <img src="{{ i3.image.url }}" alt="{{ i3.title }}" class="img-fluid" style="height: 400px">
         <a href="{{ i3.get_absolute_url }}" class="hero-carousel__slideOverlay">
           <h3>{{ i3.category }}</h3>
@@ -52,7 +52,7 @@
         <h2>Trending <span class="section-intro__style">Product</span></h2>
       </div>
       <div class="row">
-
+ 
         {% for pop_item in pop_items %}
         <div class="col-md-6 col-lg-4 col-xl-3">
           <div class="card text-center card-product">
@@ -102,8 +102,9 @@
         <p>Popular Item in the market</p>
         <h2>Best <span class="section-intro__style">Sellers</span></h2>
       </div>
-      <div class="owl-carousel owl-theme" id="bestSellerCarousel">
+      <div class="row">
         {% for best_item in best_item %}
+        <div class="col-md-6 col-lg-4 col-xl-3">
         <div class="card text-center card-product">
           <div class="card-product__img">
             <img class="card-img" src="{{ best_item.image.url }}" alt="{{ best_item.title }}" style="height: 320px">
@@ -118,6 +119,7 @@
             <h4 class="card-product__title"><a href="{{ best_item.get_absolute_url}}">{{ best_item.title }}</a></h4>
             <p class="card-product__price">{{ best_item.price }} LE</p>
           </div>
+        </div>
         </div>
         {% endfor %}
       </div>

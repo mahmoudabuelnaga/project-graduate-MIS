@@ -175,8 +175,8 @@ class CheckoutView(LoginRequiredMixin, View):
 
                 if payment_option == "S":
                     return redirect("payments:payment", payment_option='stripe')
-                elif payment_option == 'P':
-                    return redirect("payments:payment", payment_option='paypal')
+                # elif payment_option == 'P':
+                #     return redirect("payments:payment", payment_option='paypal')
                 else:
                     messages.warning(self.request, 'Failed checked')
                     return redirect("address:checkout")

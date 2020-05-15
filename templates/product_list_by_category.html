@@ -16,7 +16,7 @@
         </nav>
       </div>
     </div>
-  </div>
+  </div> 
 </section>
 <!-- ================ end banner area ================= -->
 
@@ -27,18 +27,15 @@
     <nav style="background-color: darkblue;" class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
       <!-- Navbar brand -->
       <span class="navbar-brand">Sort by:</span>
-      <ul class="nav navbar-nav">
-        <li style="border: solid;" class="nav-item submenu dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-            aria-expanded="false">Categories</a>
-          <ul class="dropdown-menu">
-            <li class="nav-item">
-              <a style="color: darkblue; margin-left: 25%;" class="nav-link"
-                href="{% url 'products:product_list_brand' %}">Brands</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <div class="dropdown show">
+        <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'products:product_list_brand' %}">Brands</a>
+        </div>
+      </div>
 
       <!-- Collapse button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"

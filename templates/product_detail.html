@@ -25,9 +25,19 @@
   <div class="container">
     <div class="row s_product_inner">
       <div class="col-lg-6">
-        <div class="owl-carousel owl-theme s_Product_carousel">
+        <div
+          class="owl-carousel owl-theme s_Product_carousel"
+          style="display: block;"
+        >
           <div class="single-prd-item">
-            <img class="img-fluid" src="{{ item.image.url }}" alt="{{ item.title }}" style="height: 500px;" />
+            {% if item.image %}
+            <img
+              class="img-fluid"
+              src="{{ item.image.url }}"
+              alt="{{ item.title }}"
+              style="height: 500px;"
+            />
+            {% endif %}
           </div>
         </div>
       </div>
@@ -37,21 +47,26 @@
           <h2>{{ item.price }} LE</h2>
           <ul class="list">
             <li>
-              <a class="active"
-                href="{{ item.category.get_absolute_url }}"><span>Category</span>:{{ item.category }}</a>
+              <a class="active" href="{{ item.category.get_absolute_url }}"
+                ><span>Category</span>:{{ item.category }}</a
+              >
             </li>
             <li>
-              <a class="active" href="{{ item.brand.get_absolute_url }}"><span>Brand</span>:{{ item.brand }}</a>
+              <a class="active" href="{{ item.brand.get_absolute_url }}"
+                ><span>Brand</span>:{{ item.brand }}</a
+              >
             </li>
           </ul>
           <p>
             {{ item.description }}
           </p>
           <div class="product_count">
-            <a class="btn btn-danger" href="{{ item.get_remove_from_cart_url }}">Remove from Cart<i
-                class="fas fa-shopping-cart"></i></a>
-            <a class="btn btn-primary" href="{{ item.get_add_to_cart_url }}">Add to Cart<i
-                class="fas fa-cart-plus"></i></a>
+            <a class="btn btn-danger" href="{{ item.get_remove_from_cart_url }}"
+              >Remove from Cart<i class="fas fa-shopping-cart"></i
+            ></a>
+            <a class="btn btn-primary" href="{{ item.get_add_to_cart_url }}"
+              >Add to Cart<i class="fas fa-cart-plus"></i
+            ></a>
           </div>
         </div>
       </div>

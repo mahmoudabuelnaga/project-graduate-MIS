@@ -143,12 +143,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+MEDIA_URL = '/media/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
-MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
@@ -173,3 +175,14 @@ COUNTRIES_FLAG_URL = 'flags/{code}.gif'
 
 
 STRIPE_SECRET_KEY = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+
+
+
+
+#send email
+EMAIL_HOST          = 'smtp.gmail.com'
+EMAIL_HOST_USER     = 'worldofbooks1751998@gmail.com'
+EMAIL_HOST_PASSWORD = 'worldofbooks1751998@groub13'
+EMAIL_PORT          = 587
+EMAIL_USE_TLS       = True
+EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'

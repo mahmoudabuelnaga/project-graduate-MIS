@@ -21,25 +21,22 @@ class ContactUs(View):
     
     def post(self, *args, **kwargs):
         try:
-            form = ContactUsForm(self.request.POST or None)
+            form = ContactUsForm(self.request.POST)
             if form.is_valid():
-                name = form.cleaned_data.get('name')
-                email = form.cleaned_data.get('email')
-                subject = form.cleaned_data.get('subject')
-                message = form.cleaned_data.get('message')
+                # name = form.cleaned_data.get('name')
+                # email = form.cleaned_data.get('email')
+                # subject = form.cleaned_data.get('subject')
+                # message = form.cleaned_data.get('message')
 
-                contact_us = ContactUs(
-                    name = name,
-                    email = email,
-                    subject = subject,
-                    message = message,
-                )
+                contact = form.save(commit=False)
+                contact.save()
 
-                contact_us.save()
-
+                # contact_us.save()
                 messages.success(self.request, "done!")
                 return redirect("/")
-        
+            else:
+                messages.info(
+                    self.request, "Please fill in the required fields")
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
             return redirect("orders:order_summary")
