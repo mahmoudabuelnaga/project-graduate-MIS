@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
 
 <!-- ================ start banner area ================= -->
 <section class="blog-banner-area" id="category">
@@ -74,7 +76,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card text-center card-product">
               <div class="card-product__img">
-                <img class="card-img" src="{{ item.image.url }}" alt="" style="height: 320px;" />
+                <img class="card-img" src="{% static 'img/product/three3.jpg' %}" alt="" style="height: 320px;" />
                 <ul class="card-product__imgOverlay">
                   <li><a href="{{ item.get_add_to_cart_url }}">
                       <button><i class="ti-shopping-cart"></i></button>
