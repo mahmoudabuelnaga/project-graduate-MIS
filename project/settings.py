@@ -23,8 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4108F1545029D387Dfb94069D111A5C169Fd65F97Eb49080'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+DEBUG = True
+# DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+# DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['https://furniture-naga.herokuapp.com/']
 
@@ -64,7 +65,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # heroku whitenoise
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # heroku whitenoise
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -180,16 +181,13 @@ COUNTRIES_FLAG_URL = 'flags/{code}.gif'
 
 STRIPE_SECRET_KEY = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
-
-
-
-#send email
-EMAIL_HOST          = 'smtp.gmail.com'
-EMAIL_HOST_USER     = 'worldofbooks1751998@gmail.com'
+# send email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'worldofbooks1751998@gmail.com'
 EMAIL_HOST_PASSWORD = 'worldofbooks1751998@groub13'
-EMAIL_PORT          = 587
-EMAIL_USE_TLS       = True
-EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 # heroku
