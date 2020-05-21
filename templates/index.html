@@ -33,7 +33,7 @@
     <div class="row d-flex justify-content-center">
       {% for i3 in item_3 %}
       <div class="hero-carousel__slide col-md-4" style="padding-right:0px">
-        <img src="{{ i3.image.url }}" alt="{{ i3.title }}" class="img-fluid" style="height: 400px">
+        <img src="{% static 'img/product/three3.jpg' %}" alt="{{ i3.title }}" class="img-fluid" style="height: 400px">
         <a href="{{ i3.get_absolute_url }}" class="hero-carousel__slideOverlay">
           <h3>{{ i3.category }}</h3>
           <p>{{ i3.title }}</p>
@@ -57,7 +57,7 @@
         <div class="col-md-6 col-lg-4 col-xl-3">
           <div class="card text-center card-product">
             <div class="card-product__img">
-              <img class="card-img" src="{{ pop_item.image.url }}" alt="{{ pop_item.title }}" style="height: 320px">
+              <img class="card-img" src="{% static 'img/product/three3.jpg' %}" alt="{{ pop_item.title }}" style="height: 320px">
               <ul class="card-product__imgOverlay">
                 <li><a href="{{ pop_item.get_add_to_cart_url }}"><button><i class="ti-shopping-cart"></i></button></a>
                 </li>
@@ -107,7 +107,7 @@
         <div class="col-md-6 col-lg-4 col-xl-3">
         <div class="card text-center card-product">
           <div class="card-product__img">
-            <img class="card-img" src="{{ best_item.image.url }}" alt="{{ best_item.title }}" style="height: 320px">
+            <img class="card-img" src="{% static 'img/product/three3.jpg' %}" alt="{{ best_item.title }}" style="height: 320px">
             <ul class="card-product__imgOverlay">
               <li><a href="{{ best_item.get_add_to_cart_url }}">
                   <button><i class="ti-shopping-cart"></i></button>
