@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import django_heroku
 import os
-from decouple import config
+# from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,12 +26,16 @@ SECRET_KEY = '4108F1545029D387Dfb94069D111A5C169Fd65F97Eb49080'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# DEBUG = True
-# DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
+# DEBUG_PROPAGATE_EXCEPTIONS = True
+# DEBUG = os.environ.get('DJANGO_DEBUG', '') == 'False'
+# DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = os.environ.get("DEBUG", False)
+
+# DEBUG = config('DEBUG', cast=bool)
+# ALLOWED_HOSTS = ['ip-address', 'www.your-website.com']
 
 ALLOWED_HOSTS = ['https://furniture-naga.herokuapp.com/']
-
 
 # Application definition
 
@@ -64,6 +68,7 @@ INSTALLED_APPS = [
     # Tools
     'bootstrap4',
     'crispy_forms',
+    # 'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +80,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -195,3 +201,22 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # heroku
 django_heroku.settings(locals())
+
+
+# DEBUG_TOOLBAR_PANELS = [
+#     'debug_toolbar.panels.versions.VersionsPanel',
+#     'debug_toolbar.panels.timer.TimerPanel',
+#     'debug_toolbar.panels.settings.SettingsPanel',
+#     'debug_toolbar.panels.headers.HeadersPanel',
+#     'debug_toolbar.panels.request.RequestPanel',
+#     'debug_toolbar.panels.sql.SQLPanel',
+#     'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+#     'debug_toolbar.panels.templates.TemplatesPanel',
+#     'debug_toolbar.panels.cache.CachePanel',
+#     'debug_toolbar.panels.signals.SignalsPanel',
+#     'debug_toolbar.panels.logging.LoggingPanel',
+#     'debug_toolbar.panels.redirects.RedirectsPanel',
+# ]
+
+# INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost',
+#                 'https://furniture-naga.herokuapp.com/')
