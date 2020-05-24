@@ -26,7 +26,7 @@ SECRET_KEY = '4108F1545029D387Dfb94069D111A5C169Fd65F97Eb49080'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 # DEBUG_PROPAGATE_EXCEPTIONS = True
 # DEBUG = os.environ.get('DJANGO_DEBUG', '') == 'False'
 # DEBUG = config('DEBUG', default=False, cast=bool)
