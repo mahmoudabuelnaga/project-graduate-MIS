@@ -26,7 +26,7 @@ SECRET_KEY = '4108F1545029D387Dfb94069D111A5C169Fd65F97Eb49080'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 # DEBUG_PROPAGATE_EXCEPTIONS = True
 # DEBUG = os.environ.get('DJANGO_DEBUG', '') == 'False'
 # DEBUG = config('DEBUG', default=False, cast=bool)
@@ -35,7 +35,7 @@ DEBUG = True
 # DEBUG = config('DEBUG', cast=bool)
 # ALLOWED_HOSTS = ['ip-address', 'www.your-website.com']
 
-ALLOWED_HOSTS = ['https://furniture-naga.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 

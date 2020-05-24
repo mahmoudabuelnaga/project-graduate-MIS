@@ -1,4 +1,4 @@
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <!-- ================ start banner area ================= -->
 <section class="blog-banner-area" id="category">
@@ -9,7 +9,9 @@
         <nav aria-label="breadcrumb" class="banner-breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Order Information</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Order Information
+            </li>
           </ol>
         </nav>
       </div>
@@ -21,27 +23,37 @@
 <!--================Order Details Area =================-->
 <section class="order_details section-margin--small">
   <div class="container">
-    <p class="text-center billing-alert">Thank you. Your order has been received.</p>
+    <p class="text-center billing-alert">
+      Thank you. Your order has been received.
+    </p>
     <div class="row mb-5">
       <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
-        <div class="confirmation-card">
+        <div class="confirmation-card" style="width: 105%; margin-left: -5%;">
           <h3 class="billing-title">Order Info</h3>
           <table class="order-rable">
             <tr>
               <td>Order number</td>
-              <td>: 60235</td>
+              <td>: {{ order.ref_code }}</td>
             </tr>
             <tr>
               <td>Date</td>
-              <td>: Oct 03, 2020</td>
+              <td>: {{order.ordered_date|date:"M d, Y"}}</td>
             </tr>
             <tr>
               <td>Total</td>
-              <td>:7000 LE</td>
+              {% if order.coupon %}
+              <td>:{{ order.get_total_coupon }} LE</td>
+              {% else %}
+              <td>:{{ order.get_total }} LE</td>
+              {% endif %}
             </tr>
             <tr>
               <td>Payment method</td>
+              {% if order.payment %}
               <td>: Check payments</td>
+              {% else %}
+              <td>: No Check payments</td>
+              {% endif %}
             </tr>
           </table>
         </div>
@@ -51,20 +63,22 @@
           <h3 class="billing-title">Billing Address</h3>
           <table class="order-rable">
             <tr>
-              <td>Street</td>
-              <td>: 56/8 Ahmed zaid</td>
+              <td>address</td>
+              <td>: {{ order.billing_address.street_address }}</td>
             </tr>
+            {% if order.billing_address.apartment_address %}
             <tr>
-              <td>City</td>
-              <td>: Obour</td>
+              <td>address2</td>
+              <td>: {{ order.billing_address.apartment_address }}</td>
             </tr>
+            {% endif %}
             <tr>
               <td>Country</td>
-              <td>: Egypt</td>
+              <td>: {{ order.billing_address.country }}</td>
             </tr>
             <tr>
               <td>Postcode</td>
-              <td>: 1205</td>
+              <td>: {{ order.billing_address.zip }}</td>
             </tr>
           </table>
         </div>
@@ -74,26 +88,27 @@
           <h3 class="billing-title">Shipping Address</h3>
           <table class="order-rable">
             <tr>
-              <td>Street</td>
-              <td>: 56/8 Ahmed zaid</td>
+              <td>address</td>
+              <td>: {{ order.shipping_address.street_address }}</td>
             </tr>
+            {% if order.shipping_address.apartment_address %}
             <tr>
-              <td>City</td>
-              <td>: Obour</td>
+              <td>address2</td>
+              <td>: {{ order.shipping_address.apartment_address }}</td>
             </tr>
+            {% endif %}
             <tr>
               <td>Country</td>
-              <td>: Egypt</td>
+              <td>: {{ order.shipping_address.country }}</td>
             </tr>
             <tr>
               <td>Postcode</td>
-              <td>: 1205</td>
+              <td>: {{ order.shipping_address.zip }}</td>
             </tr>
           </table>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 <!--================End Order Details Area =================-->
