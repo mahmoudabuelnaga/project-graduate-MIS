@@ -133,19 +133,21 @@
 
                 </div>
                 <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="same_billing_address"
-                    name="same_billing_address">
-                  <label class="custom-control-label" for="same_billing_address">Billing address is the same as my
-                    shipping
-                    address</label>
-                </div>
-                <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" name="set_default_shipping"
                     id="set_default_shipping">
                   <label class="custom-control-label" for="set_default_shipping">
                     Save as default shipping address</label>
                 </div>
               </div>
+
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="same_billing_address"
+                    name="same_billing_address">
+                  <label class="custom-control-label" for="same_billing_address">
+                    Billing address is the same as my shippingaddress
+                  </label>
+                </div>
+
 
               {% if default_shipping_address %}
               <div class="custom-control custom-checkbox">
@@ -266,6 +268,8 @@
 
   var use_default_shipping = document.querySelector("input[id=use_default_shipping]");
   var use_default_billing = document.querySelector("input[id=use_default_billing]");
+  var same_billing_address = document.querySelector("input[id=same_billing_address]")
+  
 
   use_default_shipping.addEventListener('change', function () {
     if (this.checked) {
@@ -276,6 +280,14 @@
   })
 
   use_default_billing.addEventListener('change', function () {
+    if (this.checked) {
+      hideable_billing_form.hide();
+    } else {
+      hideable_billing_form.show();
+    }
+  })
+  
+  same_billing_address.addEventListener('change', function () {
     if (this.checked) {
       hideable_billing_form.hide();
     } else {

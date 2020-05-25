@@ -61,9 +61,9 @@ INSTALLED_APPS = [
     'search.apps.SearchConfig',
 
     # allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
 
     # Tools
     'bootstrap4',
@@ -169,13 +169,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # allauth
-AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
+# AUTHENTICATION_BACKENDS = (
+#     # Needed to login by username in Django admin, regardless of `allauth`
+#     'django.contrib.auth.backends.ModelBackend',
 
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
+#     # `allauth` specific authentication methods, such as login by e-mail
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# )
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
@@ -185,17 +185,18 @@ LOGOUT_REDIRECT_URL = '/'
 # crispy_forms
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
-COUNTRIES_FLAG_URL = 'flags/{code}.gif'
-
-
+# Stripe Settings
+STRIPE_PUBLISHABLE_KEY = 'pk_test_IzSIOFYSyIbzCMlGfXKrjLYe00O8bysXA0'
 STRIPE_SECRET_KEY = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
+
 # send email
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'worldofbooks1751998@gmail.com'
-EMAIL_HOST_PASSWORD = 'worldofbooks1751998@groub13'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'mahmoudaboelnaga'
+EMAIL_HOST_PASSWORD = '2wyuwuvaQ2H2hte'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 

@@ -75,10 +75,11 @@
 									aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
 
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="/accounts/logout">Logout</a></li>
 									{% if user.is_staff %}
 									<li class="nav-item"><a class="nav-link" href="/admin">Admin Dashbord</a></li>
 									{% endif %}
+									<li class="nav-item"><a class="nav-link" href="{% url 'password_change' %}">Password change</a></li>
+									<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
 								</ul>
 
 
@@ -86,8 +87,8 @@
 								<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Registration</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="/accounts/login">Login</a></li>
-									<li class="nav-item"><a class="nav-link" href="/accounts/signup">Register</a></li>
+									<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+									<li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a></li>
 								</ul>
 								{% endif %}
 							</li>
@@ -98,16 +99,13 @@
 
 							<ul class="nav-shop">
 								<li class="nav-item">
-									<form method='GET' action='{% url "search:search_products" %}'
-										class="form my-2 my-lg-0 search-form">
-										<div class='input-group'>
-											<input class="form-control" type="text" placeholder="Search" name='q'
-												aria-label="Search" value='{{ request.GET.q }}'>
-											<span class='input-group-btn'>
-												<button class="nav-item" type="submit"><i
-														class="ti-search"></i></button>
-											</span>
-										</div>
+									<!-- Search form -->
+									<form method='GET' action='{% url "search:search_products" %}' class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
+									<input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+										aria-label="Search" name='q' value='{{ request.GET.q }}'>
+										<button class="nav-item" type="submit">
+											<i class="fas fa-search" aria-hidden="true"></i>
+										</button>
 									</form>
 								</li>
 
