@@ -191,13 +191,14 @@ STRIPE_SECRET_KEY = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
 
 # send email
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'worldofbooks1751998@gmail.com'
-EMAIL_HOST_PASSWORD = 'worldofbooks1751998@groub13'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'mahmoudaboelnaga392@gmail.com'
+# EMAIL_HOST_PASSWORD = 'Mm1751998'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # heroku
