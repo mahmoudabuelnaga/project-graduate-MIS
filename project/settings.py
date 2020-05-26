@@ -37,7 +37,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-ADMINS = ['admin', 'mahmoudaboelnaga392@gmail.com']
+# ADMINS = ['admin', 'mahmoudaboelnaga392@gmail.com']
 
 # Application definition
 
