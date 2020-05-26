@@ -35,7 +35,9 @@ DEBUG = False
 # DEBUG = config('DEBUG', cast=bool)
 # ALLOWED_HOSTS = ['ip-address', 'www.your-website.com']
 
-ALLOWED_HOSTS = ['*', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
+
+ADMINS = ['admin', 'mahmoudaboelnaga392@gmail.com']
 
 # Application definition
 
@@ -192,8 +194,8 @@ STRIPE_SECRET_KEY = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
 # send email
 # EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'mahmoudaboelnaga392@gmail.com'
-# EMAIL_HOST_PASSWORD = 'Mm1751998'
+# EMAIL_HOST_USER = ''
+# EMAIL_HOST_PASSWORD = ''
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
