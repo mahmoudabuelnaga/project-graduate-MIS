@@ -26,7 +26,7 @@ SECRET_KEY = '^2a0rf6#rvgy=#tn^a+2qvxb5^jx0)$xdqg9ukj3y3fns%b=@9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 # DEBUG_PROPAGATE_EXCEPTIONS = True
 # DEBUG = os.environ.get('DJANGO_DEBUG', '') == 'False'
 # DEBUG = config('DEBUG', default=False, cast=bool)
@@ -76,7 +76,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',  # heroku whitenoise
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # heroku whitenoise
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
