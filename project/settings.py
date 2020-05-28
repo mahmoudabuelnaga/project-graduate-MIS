@@ -18,22 +18,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
+# ^2a0rf6#rvgy=#tn^a+2qvxb5^jx0)$xdqg9ukj3y3fns%b=@9
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^2a0rf6#rvgy=#tn^a+2qvxb5^jx0)$xdqg9ukj3y3fns%b=@9'
+SECRET_KEY = os.environ.get('FURNITURE_SECRET_KEY')
 # SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
-# DEBUG_PROPAGATE_EXCEPTIONS = True
-# DEBUG = os.environ.get('DJANGO_DEBUG', '') == 'False'
-# DEBUG = config('DEBUG', default=False, cast=bool)
-# DEBUG = os.environ.get("DEBUG", False)
-
-# DEBUG = config('DEBUG', cast=bool)
-# ALLOWED_HOSTS = ['ip-address', 'www.your-website.com']
 
 ALLOWED_HOSTS = ['*']
 
@@ -61,11 +55,6 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'refound.apps.RefoundConfig',
     'search.apps.SearchConfig',
-
-    # allauth
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
 
     # Tools
     'bootstrap4',
@@ -114,10 +103,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'MIS8',
-        'USER': 'postgres',
-        'PASSWORD': 'mahmoudaboelnaga@1751998',
-        'HOST': os.environ.get('DATABASE_URL'),
-        'PORT': os.environ.get('DATABASE_PORT'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }}
 
 
@@ -169,18 +158,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-# allauth
-# AUTHENTICATION_BACKENDS = (
-#     # Needed to login by username in Django admin, regardless of `allauth`
-#     'django.contrib.auth.backends.ModelBackend',
-
-#     # `allauth` specific authentication methods, such as login by e-mail
-#     'allauth.account.auth_backends.AuthenticationBackend',
-# )
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+# LOGIN_URL = 'accounts/login'
 
 
 # crispy_forms
@@ -192,14 +174,16 @@ STRIPE_SECRET_KEY = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
 
 # send email
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = ''
-# EMAIL_HOST_PASSWORD = ''
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+# 'smemqcuhvsafhcgp'  # os.environ.get('EMAIL_PASSWORD')
+EMAIL_HOST_PASSWORD = 'smemqcuhvsafhcgp'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # heroku

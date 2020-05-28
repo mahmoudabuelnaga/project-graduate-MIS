@@ -33,7 +33,7 @@
 						<p>
 							<h4>New to our website?</h4>
 							<p>If you have not created an account yet, then please sign up</p>
-							<a class="button button-account" href="">Create an Account</a>
+							<a class="button button-account" href="{% url 'accounts:signup' %}">Create an Account</a>
 						</p>
 
 					</div>
@@ -55,7 +55,7 @@
 							<button type="submit" value="submit"
 								class="button button-login w-100">Sign In</button>
 							{% endbuttons %}
-							{% comment %} <a href="{% url 'password_reset' %}">Forgot Password?</a> {% endcomment %}
+							<a href="{% url 'password_reset' %}">Forgot Password?</a>
 						</div>
 					</form>
 				</div>
