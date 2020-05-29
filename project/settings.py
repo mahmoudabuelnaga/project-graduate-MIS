@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'https://furniture-naga.herokuapp.com']
 
 
 # Application definition
