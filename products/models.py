@@ -11,6 +11,11 @@ class Category(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
 
+    class Meta:
+        permissions = (
+            ('read_category','Can read item'),
+        )
+
     def get_absolute_url(self):
         return reverse('products:product_list_by_category', args=[self.slug])
 
@@ -23,6 +28,11 @@ class Category(models.Model):
 class Brand(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
+
+    class Meta:
+        permissions = (
+            ('read_brand','Can read brand'),
+        )
 
     def get_absolute_url(self):
         return reverse('products:product_list_by_brand', args=[self.slug])
@@ -74,6 +84,9 @@ class Item(models.Model):
 
     class Meta:
         ordering = ('-created',)
+        permissions = (
+            ('read_item','Can read item'),
+        )
 
     def __str__(self):
         return self.title

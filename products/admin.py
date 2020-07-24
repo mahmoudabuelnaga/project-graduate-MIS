@@ -7,6 +7,12 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug']
     prepopulated_fields = {'slug': ('title',)}
 
+    def get_readonly_fields(self, request, obj=None):
+        if not request.user.is_superuser and request.user.has_prem('categories.read_category'):
+            return [f.title for f in self.model._meta.fields]
+
+        return super(CategoryAdmin, self).get_readonly_fields(request, obj=obj) 
+
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
